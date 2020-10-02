@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const empty = require('is-empty');
 
 module.exports = (ErrorBot, member) => {
   try{

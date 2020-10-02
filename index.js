@@ -2,7 +2,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require('fs');
 const Enmap = require('enmap');
-const ErrorBot = new Discord.Client();
+const ErrorBot = new Discord.Client({partials: ["MESSAGE" , "CHANNEL", "REACTION"]});
 
 ErrorBot.commands = new Enmap();
 
