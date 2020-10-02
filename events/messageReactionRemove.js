@@ -9,13 +9,13 @@ module.exports = async (ErrorBot, reaction, user) => {
 
     if(reaction.message.channel.id === '761572801328840765') {
       if(reaction.emoji.name === 'valorant'){
-        await reaction.message.guild.members.cache.get(user.id).roles.add('761574299840151552');
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('761574299840151552');
       }
       if(reaction.emoji.name === 'amongus'){
-        await reaction.message.guild.members.cache.get(user.id).roles.add('761573984251936820');
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('761573984251936820');
       }
       if(reaction.emoji.name === 'csgo'){
-        await reaction.message.guild.members.cache.get(user.id).roles.add('761574643819610151');
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('761574643819610151');
       }
     }
   } catch(error){
