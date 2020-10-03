@@ -18,6 +18,12 @@ module.exports = async (ErrorBot, reaction, user) => {
         await reaction.message.guild.members.cache.get(user.id).roles.add('761574643819610151');
       }
     }
+
+    if(reaction.message.channel.id === '761978635401297962') {
+      if(reaction.emoji.id === '761974498865709076'){
+        await reaction.message.guild.members.cache.get(user.id).roles.add('761509640391229460');
+      }
+    }
   } catch(error){
     return console.error(error);
   }
