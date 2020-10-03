@@ -1,7 +1,10 @@
 const Discord = require('discord.js');
 const empty = require('is-empty');
-const { CanvasSenpai } = require("canvas-senpai")
+const { CanvasSenpai } = require("canvas-senpai");
+const fs = require('fs');
 const canva = new CanvasSenpai();
+
+
 
 module.exports = async (ErrorBot, member) => {
   try{
@@ -20,13 +23,23 @@ module.exports = async (ErrorBot, member) => {
       embed
     });
 
-    let data = await canva.welcome(member, { link: "http://assets.bigcartel.com/product_images/183133846/000.png", blur: false })
+    var images = [];
 
-    const attachment = new Discord.MessageAttachment(
-      data
-    );
+    fs.readdir('./image/', async (err, files) => {
+      if (err) return err;
+      files.forEach(function(item) {
+        images.push(item);
+      });
 
-    welcome_channel.send(`Welcome to the server, ${member.user.username}!`, attachment);
+      var image = images[Math.floor((Math.random() * images.length)) % images.length];
+      let data = await canva.welcome(member, { link: `./image/${image}`, blur: false });
+
+      const attachment = new Discord.MessageAttachment(
+        data
+      );
+
+      welcome_channel.send(`Welcome to the server, ${member.user.username}!`, attachment);
+    });
   } catch(error){
     return console.error(error);
   }
