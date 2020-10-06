@@ -28,7 +28,6 @@ module.exports = (ErrorBot, message) => {
     xp[message.author.id].level = xp[message.author.id].level + 1;
     xp[message.author.id].xp = currXp - nextLevel;
   }
-  console.log(xp);
   fs.writeFile('./xp.json', JSON.stringify(xp), (err) => {
     if(err) console.log(err);
   });
