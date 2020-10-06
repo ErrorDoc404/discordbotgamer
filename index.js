@@ -6,6 +6,11 @@ const ErrorBot = new Discord.Client({partials: ["MESSAGE" , "CHANNEL", "REACTION
 
 ErrorBot.commands = new Enmap();
 
+fs.writeFile('xp.json', 'Learn Node FS module', function (err) {
+  if (err) throw err;
+  console.log('File is created successfully.');
+});
+
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error;
   files.forEach(file => {
