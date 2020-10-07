@@ -6,10 +6,21 @@ const ErrorBot = new Discord.Client({partials: ["MESSAGE" , "CHANNEL", "REACTION
 
 ErrorBot.commands = new Enmap();
 
-fs.writeFile('xp.json', 'Learn Node FS module', function (err) {
-  if (err) throw err;
-  console.log('File is created successfully.');
-});
+const path = 'xp.json';
+
+
+try {
+  if (fs.existsSync(path)) {
+    console.log('file is exist');
+  }else {
+    fs.writeFile('xp.json', '{}', function (err) {
+      if (err) console.log(err);
+      console.log('File is created successfully.');
+    });
+  }
+} catch(err) {
+  console.error(err)
+}
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error;
