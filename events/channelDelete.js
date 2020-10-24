@@ -7,11 +7,11 @@ module.exports = (ErrorBot, channel) => {
     var image = empty(channel.guild.iconURL()) ? 'https://cdn.discordapp.com/embed/avatars/0.png' : channel.guild.iconURL() ;
 
     const embed = new Discord.MessageEmbed() // Create a new RichEmbed
-    .setColor('#3cba54')
+    .setColor('#db3236')
     .setAuthor(channel.guild.name , image)
     .setTimestamp()
     .setFooter(`ID: ${channel.id}`)
-    .setTitle(`New Channel Created`)
+    .setTitle(`Channel Deleted`)
     .setDescription(`Name of channel : **#${channel.name}**`);
 
     log_channel.send({ // Send the embed to the defined channel

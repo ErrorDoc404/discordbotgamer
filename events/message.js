@@ -5,7 +5,6 @@ module.exports = (ErrorBot, message) => {
   if(message.content.type === "dm") return;
 
   let xpAdd = Math.floor(Math.random() * 5) + 15;
-  console.log(xpAdd);
 
   if(!xp[message.author.id]){
     xp[message.author.id] = {
@@ -18,7 +17,7 @@ module.exports = (ErrorBot, message) => {
   let currLevel = xp[message.author.id].level;
 
   if(message.content.startsWith(`${process.env.prefix}`)){
-    console.log('xp not earned with commands line');
+    // todo 
   }else {
     xp[message.author.id].xp = currXp + xpAdd;
   }

@@ -26,7 +26,7 @@ module.exports.run = async(ErrorBot, message, argument) => {
     .on('error', error => {
       console.log(error);
     })
-    dispatcher.setVolumeLogarithmic(50/100);
+    dispatcher.setVolumeLogarithmic(80/100);
 
 
   // const songInfo = await ytdl.getInfo(argument);
