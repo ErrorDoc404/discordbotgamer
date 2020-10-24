@@ -10,13 +10,13 @@ const path = 'xp.json';
 
 
 try {
-  if (fs.existsSync(path)) {
-    console.log('file is exist');
-  }else {
+  if (!fs.existsSync(path)) {
     fs.writeFile('xp.json', '{}', function (err) {
       if (err) console.log(err);
       console.log('File is created successfully.');
     });
+  }else{
+    console.log('xp.json file exist');
   }
 } catch(err) {
   console.error(err)

@@ -5,11 +5,32 @@ const empty = require('is-empty');
 module.exports.run = async(ErrorBot, message, argument) => {
   try{
     if (message.member.hasPermission('ADMINISTRATOR')){
+      var mod_logs = message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `mod-logs`);
+      var welcome = message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `welcome`);
       var rules_channel = message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `rules-access`);
-      var help_channel = message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `help-faq`);
+      var help_channel = message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `help`);
+      var faq = message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `faq`);
+
+      if(!empty(mod_logs)){
+        message.channel.send('Mod channel already avilable');
+      }else {
+        message.guild.channels.create('mod-logs', { reason: 'Mods logs will generate here' }).then(channel => {
+          channel.setTopic('Mods logs will generate here');
+        });
+        message.channel.send('Mod channel created sucessfully');
+      }
+
+      if(!empty(welcome)){
+        message.channel.send('Welcome channel already avilable');
+      }else {
+        message.guild.channels.create('welcome', { reason: 'Mods logs will generate here' }).then(channel => {
+          channel.setTopic('Welcome logs will generate here');
+        });
+        message.channel.send('Welcome channel created sucessfully');
+      }
 
       if(!empty(rules_channel)){
-        message.channel.send('Channel already avilable');
+        message.channel.send('Rules channel already avilable');
       }else {
         var rule_image = 'https://cdn.discordapp.com/attachments/311719903726010368/722943041303740416/image.png';
         message.guild.channels.create('rules-access', { reason: 'this channel is got rules' }).then(channel => {
@@ -37,8 +58,17 @@ module.exports.run = async(ErrorBot, message, argument) => {
         message.channel.send('Rules channel created sucessfully');
       }
 
+      if(!empty(faq)){
+        message.channel.send('FAQ channel already avilable');
+      }else {
+        message.guild.channels.create('faq', { reason: 'this channel is got rules' }).then(channel => {
+          channel.setTopic('Follow instructions in Discord Rules selection to gain access to the rest of the server');
+        });
+        message.channel.send('Rules channel created sucessfully');
+      }
+
       if(!empty(help_channel)){
-        message.channel.send('Channel already avilable');
+        message.channel.send('Help channel already avilable');
       }else {
         var help_image = 'https://cdn.discordapp.com/attachments/669702412948340781/669702464823623710/image.png';
         message.guild.channels.create('help', { reason: 'this channel is got help' }).then(channel => {
@@ -48,7 +78,7 @@ module.exports.run = async(ErrorBot, message, argument) => {
               attachment: help_image
             }]
           }).then(async msg => {
-            msg.channel.send("```diff\n- I AM NOT SITE ADMINISTRATORS, I AM A COMMUNITY BOT.  I HAVE NO CONTROL OVER ANY SITES. I RUN THIS DISCORD ONLY.\n```\n**Q: How do I unlock the rest of this server?**\nA: Read the <#"+ message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `rules-access`) +"> channel and follow it's instructions to agree to rules.");
+            msg.channel.send("```diff\n- I AM NOT SITE ADMINISTRATORS, I AM A COMMUNITY BOT. IF YOU NEED HELP PLEASE ASK QUESTION IN <#"+message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `faq`)+"> CHANNEL.\n```\n**Q: How do I unlock the rest of this server?**\n> A: Read the <#"+ message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `rules-access`) +"> channel and follow it's instructions to agree to rules.");
           });
         });
         message.channel.send('Help channel created sucessfully');
