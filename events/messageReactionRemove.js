@@ -19,10 +19,24 @@ module.exports = async (ErrorBot, reaction, user) => {
       }
     }
 
-    if(reaction.message.channel.id === '761978635401297962') {
-      if(reaction.emoji.id === '761974498865709076'){
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('761509640391229460');
+    if(reaction.message.channel.id === '801504561243750400') {
+      if(reaction.emoji.id === '801501063240744961'){
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('797352282198507530');
       }
+
+      var log_channel = reaction.message.guild.channels.cache.filter(chx => chx.type === "text").find(x => x.name === `mod-logs`);
+      let newRole = reaction.message.guild.roles.cache.get("797352282198507530");
+      const embed = new Discord.MessageEmbed() // Create a new RichEmbed
+        .setAuthor(user.tag, user.avatarURL()) // Show the Discord tag of the new member and it's avatar
+        .setTitle('Remove Role') // Title of the embed
+        .setDescription(`${user} remove Role ${newRole}`) // Description of the embed
+        .setTimestamp()
+        .setColor('#db3236')
+        .setFooter(`ID: ${user.id}`);
+
+      log_channel.send({ // Send the embed to the defined channel
+        embed
+      });
     }
   } catch(error){
     return console.error(error);

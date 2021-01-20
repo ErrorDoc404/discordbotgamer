@@ -1,4 +1,4 @@
 module.exports = ErrorBot => {
     console.log(`Logged in as ${ErrorBot.user.username}!`);
-    ErrorBot.user.setActivity('YouTube', { type: 'STREAMING' });
+    ErrorBot.user.setActivity('Valorant', { type: 'STREAMING' });
 };

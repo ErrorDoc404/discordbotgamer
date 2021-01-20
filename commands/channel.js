@@ -51,7 +51,7 @@ module.exports.run = async(ErrorBot, message, argument) => {
                 );
 
             msg.channel.send(rulesEmbedText).then(sentEmbed => {
-              sentEmbed.react("761974498865709076")
+              sentEmbed.react("801501063240744961")
             });
           });
         });
@@ -83,6 +83,9 @@ module.exports.run = async(ErrorBot, message, argument) => {
         });
         message.channel.send('Help channel created sucessfully');
       }
+    }
+    else{
+      message.channel.send('You need higher Authority');
     }
   }catch (error){
     console.error(error);
