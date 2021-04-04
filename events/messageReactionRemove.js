@@ -19,7 +19,7 @@ module.exports = async (ErrorBot, reaction, user) => {
       }
     }
 
-    if(reaction.message.channel.id === '801504561243750400') {
+    if(reaction.message.channel.id === '801522289547804703') {
       if(reaction.emoji.id === '801501063240744961'){
         await reaction.message.guild.members.cache.get(user.id).roles.remove('797352282198507530');
       }
